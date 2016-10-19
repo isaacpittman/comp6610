@@ -125,6 +125,34 @@
             <figcaption> <i><b>Figure 4.</b> LEDs wired to the Raspberry Pi GPIO pins, leftmost LED being GPIO 0 and rightmost LED being GPIO 2.</i></figcaption>
           </figure><br>
 
+          <p align = "center" class="lead">
+            We tested each LED to ensure it worked by running the hardware testing script provided in lightshowpi. This will flash each LED twice, rotating through the provided GPIO pins in the configuration file, cyclically.
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>cd ~/lightshowpi/</span>
+            <span>sudo python py/hardware_controller.py --state=flash</span>
+          </pre><br>
+
+          <figure>
+            <img src= "" alt= "LED flashing test." style="width:400px;">
+            <figcaption> <i><b>Figure 5.</b> LED flashing test.</i></figcaption>
+          </figure><br>
+
+          <p align = "center" class="lead">
+            Figure 5 shows each LED flashing, showing that they work. From here, it was decided the Pi was ready to play a song and sycronize the LEDS to it. We placed a song on the Pi, and played it using the following command:
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>cd ~/lightshowpi/</span>
+            <span>sudo python py/synchronized_lights.py --file=/home/pi/lightshowpi/music/sample/ovenrake_deck-the-halls.mp3</span>
+          </pre><br>
+
+          <p align = "center" class="lead">
+            The following video shows the syncronized LED show working on our Pi unit.
+          </p>
+
+          <!-- Embed youtube video here -->
 
         </div>
 
