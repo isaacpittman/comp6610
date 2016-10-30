@@ -1,10 +1,13 @@
 #Testing on a single machine
-We were able to install mosquitto on an Ubuntu laptop,
-`sudo apt-get install mosquitto`
-Install mosquitto-clients,
-`sudo apt-get install mosquitto-clients` on the laptop and on the Raspberry Pi, so we could send messages to mosquitto_sub using
-`mosquitto_sub -v -t "mytopic"` from mosquitto_pub using
-`mosquitto_pub -t "mytopic" -m "test message"`. We tested on the single laptop, and everything worked fine.
+We were able to install mosquitto on an Ubuntu laptop, 
+`sudo apt-get install mosquitto` 
+Install mosquitto-clients, 
+`sudo apt-get install mosquitto-clients` 
+on the laptop and on the Raspberry Pi, so we could send messages to mosquitto_sub using 
+`mosquitto_sub -v -t "mytopic"` 
+from mosquitto_pub using 
+`mosquitto_pub -t "mytopic" -m "test message"`. 
+We tested on the single laptop, and everything worked fine. 
 
 #Testing with a remote subscriber
 Next, we put the subscriber on the Raspberry Pi, but kept the broker and the publisher on the laptop. We set up a configuration file for the broker on the laptop, so that the broker will bind to the laptop's local IP address, 192.168.1.5. (This configuration file may have been unnecessary. It might bind to the correct IP automatically.)
@@ -15,16 +18,16 @@ allow_anonymous true
 bind_address 192.168.1.5
 ```
 
-We confirmed this was working:
-[in a terminal window on the laptop, for the broker]
+We confirmed this was working: 
+[in a terminal window on the laptop, for the broker] 
 `$ mosquitto -v -c /etc/mosquitto/mosquitto.conf`
 
-[in a terminal window on the RPi, for the subscriber]
+[in a terminal window on the RPi, for the subscriber] 
 ```
 $ mosquitto_sub -v -t "mytopic" -h "192.168.1.5"
 mytopic test message
 ```
-[in a different terminal window on the laptop, for the publisher]
+[in a different terminal window on the laptop, for the publisher] 
 ```
 $ mosquitto_pub -t "mytopic" -m "test message" -h "192.168.1.5"
 $
@@ -73,17 +76,17 @@ certfile /etc/mosquitto/certs/server.crt
 keyfile /etc/mosquitto/certs/server.key
 ```
 
-We also copied ca.crt to the Raspberry Pi's home folder, so the subscriber running there could trust it. Finally, to test it, we ran:
-[in a terminal window on the laptop, for the broker]
+We also copied ca.crt to the Raspberry Pi's home folder, so the subscriber running there could trust it. Finally, to test it, we ran: 
+[in a terminal window on the laptop, for the broker] 
 `$ mosquitto -v -c /etc/mosquitto/mosquitto.conf`
 
-[in a terminal window on the RPi, for the subscriber]
+[in a terminal window on the RPi, for the subscriber] 
 ```
 $ mosquitto_sub -t "ssltopic" -v -p 8883 -h 192.168.1.5 --cafile ~/ca.crt
 ssltopic message
 ```
 
-[in a different terminal window on the laptop, for the publisher]
+[in a different terminal window on the laptop, for the publisher] 
 `$ mosquitto_pub -t "ssltopic" -m "message" -p 8883 -h 192.168.1.5 --cafile /etc/mosquitto/ca_certificates/ca.crt`
 
 
