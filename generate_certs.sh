@@ -47,4 +47,4 @@ openssl req -out $CLIENT_SIGNING_REQUEST_PATH -key $CLIENT_PRIVATE_KEY_PATH -new
 # Sign the client certificate (via the certificate signing request) using the CA
 echo "Generating and signing client's certificate [$CLIENT_CERTIFICATE_PATH] from client's certificate signing request [$CLIENT_SIGNING_REQUEST_PATH] using CA's certificate [$CA_CERTIFICATE_PATH] and CA's private key [$CA_PRIVATE_KEY_PATH]." 
 CLIENT_CERTIFICATE_PATH=client.crt
-openssl x509 -req -in $CLIENT_SIGNING_REQUEST_PATH -CA $CA_CERTIFICATE_PATH -CAkey $CA_PRIVATE_KEY_PATH -CAcreateserial -out $CLIENT_CERTIFICATE_PATH -days $DURATION
+openssl x509 -req -in $CLIENT_SIGNING_REQUEST_PATH -CA $CA_CERTIFICATE_PATH -CAkey $CA_PRIVATE_KEY_PATH -CAcreateserial -out $CLIENT_CERTIFICATE_PATH -days $DURATION -addtrust clientAuth
