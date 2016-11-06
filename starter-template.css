@@ -3,7 +3,6 @@ body {
 }
 .starter-template {
   padding: 40px 15px;
-  text-align: center;
 }
 
 .com {
@@ -12,7 +11,30 @@ body {
 
 p {
 
-	text-indent: 50px;
+  text-indent: 50px;
+  text-align: center;
+
+}
+
+h1 {
+
+  text-align: center;
+
+}
+h2 {
+
+  text-align: center;
+
+}
+
+h4 {
+
+  text-align: center;
+
+}
+figure {
+
+  text-align: center;
 
 }
 

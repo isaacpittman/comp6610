@@ -1,63 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
 
-    <title>Comp 6610 Website</title>
+  <title>Comp 6610 Website</title>
 
-    <!-- Bootstrap core CSS -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Bootstrap core CSS -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Custom styles for this template -->
-    <link href="../starter-template.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../starter-template.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+      <![endif]-->
+    </head>
 
-  <body>
+    <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="../index.html">Comp 6610</a>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">Comp 6610</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="../index.html">Home</a></li>
+              <li><a href="../about.html">About</a></li>
+              <li><a href="Assignment2.html">Assignment 2</a></li>
+              <li><a href="../Assignment3/Assignment3.html">Assignment 3</a></li>
+              <li><a href="../Assignment4/Assignment4.html">Assignment 4</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="../index.html">Home</a></li>
-            <li><a href="../about.html">About</a></li>
-            <li><a href="../Assignment2/Assignment2.html">Assignment 2</a></li>
-            <li><a href="Assignment3.html">Assignment 3</a></li>
-            <li><a href="../Assignment4/Assignment4.html">Assignment 4</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      </nav>
 
-    <div class="container">
+      <div class="container">
 
-      <div class="starter-template">
-        <h1>Assignment 3 Documentation</h1>
-        <p class="lead"></p>
-      </div>
+        <div class="starter-template">
+          <h1>Assignment 3 Documentation</h1>
+          <h4 style="color:gray">Written by</h4>
+          <h4 style="color:gray">Brian Carlson, David Rocca, Isaac Pittman, Jeremie Neito </h4>
 
-    </div><!-- /.container -->
+          <h2>Testing on a single machine</h2>
+
+          <p align="center" class="lead">
+            We were able to install mosquitto on an Ubuntu laptop,
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>sudo apt-get install mosquitto</span>
+          </pre><br>
+
+          <p align="center" class="lead">
+            Install mosquitto-clients,
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>sudo apt-get install mosquitto-clients</span>
+          </pre><br>
+
+          <p align="center" class="lead">
+            on the laptop and on the Raspberry Pi, so we could send messages to mosquitto_sub using 
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>mosquitto_sub -v -t "mytopic"</span>
+          </pre><br>
+
+          <p align="center" class="lead">
+            from mosquitto_pub using 
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>mosquitto_pub -t "mytopic" -m "test message"</span>
+          </pre><br>
+
+          <p align="center" class="lead">
+            We tested on the single laptop, and everything worked fine. 
+          </p>
+
+          <h2>Testing with a remote subscriber</h2>
+
+          <p align="center" class="lead">
+            Next, we put the subscriber on the Raspberry Pi, but kept the broker and the publisher on the laptop. We set up a configuration file for the broker on the laptop, so that the broker will bind to the laptop's local IP address, 192.168.1.5. (This configuration file may have been unnecessary. It might bind to the correct IP automatically.) 
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>$ cat /etc/mosquitto/conf.d/local.conf</span>
+            <span>allow_anonymous true</span>
+            <span>bind_address 192.168.1.5</span>
+          </pre><br>
+
+          <p align="center" class="lead">
+            We confirmed this was working: 
+          </p>
+
+          <h4>In a terminal window on the laptop, for the broker</h4>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>$ mosquitto -v -c /etc/mosquitto/mosquitto.conf</span>
+          </pre><br>
+
+          <h4>In a terminal window on the RPi, for the subscriber</h4>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>$ mosquitto_sub -v -t "mytopic" -h "192.168.1.5"</span>
+            <span>mytopic test message</span>
+          </pre><br>
+
+          <h4>In a different terminal window on the laptop, for the publisher</h4>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>$ mosquitto_pub -t "mytopic" -m "test message" -h "192.168.1.5"</span>
+            <span>$</span>
+          </pre><br>
+
+          <h2>Configuring server authentication</h2>
+
+          <p align="center" class="lead">
+            Once we had the mosquitto protocol working across the network, we started working on the SSL.
+          </p>
+          <p align="center" class="lead">
+We followed the steps at https://mosquitto.org/man/mosquitto-tls-7.html to generate certificates for a CA and Server. (Eventually, we'll need the Client piece as well.) That page warns that you need different subject parameters, and we found through experimentation that if just the defaults were accepted for the CA and Server, or if everything were just left blank, that the TLS handshake would fail with obscure errors. To get it working, we used the following:
+          </p>
+
+          <h4>Generating certificates for the CA:</h4>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>Country Name (2 letter code) [AU]:US</span>
+            <span>State or Province Name (full name) [Some-State]:</span>
+            <span>Locality Name (eg, city) []:</span>
+            <span>Organization Name (eg, company) [Internet Widgits Pty Ltd]:DO_NOT_TRUST_mqttpi</span>
+            <span>Organizational Unit Name (eg, section) []:</span>
+            <span>Common Name (e.g. server FQDN or YOUR name) []:DO_NOT_TRUST_testca</span>
+            <span>Email Address []:ca@example.com</span>
+          </pre><br>
+
+          <h4>Generating certificates for the Server:</h4>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>Country Name (2 letter code) [AU]:US
+            <span>State or Province Name (full name) [Some-State]:
+            <span>Locality Name (eg, city) []:
+            <span>Organization Name (eg, company) [Internet Widgits Pty Ltd]:TestServerForMQTT
+            <span>Organizational Unit Name (eg, section) []:
+            <span>Common Name (e.g. server FQDN or YOUR name) []:192.168.1.5
+            <span>Email Address []:server@example.com
+            <br>
+            <span>Please enter the following 'extra' attributes
+            <span>to be sent with your certificate request
+            <span>A challenge password []:
+            <span>An optional company name []:</span>
+          </pre><br>
+          <p align="center" class="lead">
+For the Common Name of the Server, we used the IP address of the laptop where the broker (that is, the server) was running.
+          </p>
+          <p align="center" class="lead">
+Once we had generated the certs, we deleted local.conf and created a new configuration according to the instructions at https://primalcortex.wordpress.com/2016/03/31/mqtt-mosquitto-broker-with-ssltls-transport-security/, and copied the relevant files--ca.crt, server.crt, server.key--to the directories expected by the new conf file:
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>$ cat /etc/mosquitto/conf.d/ssl.conf</span>
+            <span>listener 8883</span>
+            <span>cafile /etc/mosquitto/ca_certificates/ca.crt</span>
+            <span>certfile /etc/mosquitto/certs/server.crt</span>
+            <span>keyfile /etc/mosquitto/certs/server.key</span>
+          </pre><br>
+
+          <p align="center" class="lead">
+We also copied ca.crt to the Raspberry Pi's home folder, so the subscriber running there could trust it. Finally, to test it, we ran:
+          </p>
+
+          <h4>In a terminal window on the laptop, for the broker:</h4>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>$ mosquitto -v -c /etc/mosquitto/mosquitto.conf</span>
+          </pre><br>
+
+          <h4>In a terminal window on the RPi, for the subscriber:</h4>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>$ mosquitto_sub -t "ssltopic" -v -p 8883 -h 192.168.1.5 --cafile ~/ca.crt</span>
+            <span>ssltopic message</span>
+          </pre><br>
+
+          <h4>In a different terminal window on the laptop, for the publisher:</h4>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>$ mosquitto_pub -t "ssltopic" -m "message" -p 8883 -h 192.168.1.5 --cafile /etc/mosquitto/ca_certificates/ca.crt</span>
+          </pre><br>
+
+          <p align="center" class="lead">
+We ran into another stumbling block here. When we didn't include "-h 192.168.1.5" for the publisher, we got an "unknown certificate" error. What may have happened was the publisher tried to validate the server using its Common Name, which was set to 192.168.1.5 when we generated server.csr. But, since we didn't specify a hostname for the publisher to use, it defaulted to 127.0.0.1. So, even though it was able to reach the server (since they're both on the laptop) and start the handshake, authentication failed because the server appeared to have an IP address (127.0.0.1) that didn't match its Common Name (192.168.1.5). So it appears that SSL requires the -h flag even when testing locally for authentication to succeed.
+          </p>
+
+          <h2>Client Authentication</h2>
+
+          <p align="center" class="lead">
+Here we add the requirement for the client to provide a certificate in order to connect. This can be done by adding the following line to the configuration file:
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>require_certificate true</span>
+          </pre><br>
+
+          <p align="center" class="lead">
+Now when we run the previous commands, we get the following error:
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span> mosquitto_sub -t "ssltopic" -v -p 8883 -h 192.168.1.5 --cafile ~/ca.crt</span>
+            <span> Error: Protocol error</span>
+          </pre><br>
+
+          <p align="center" class="lead">
+And on the broker:
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>OpenSSL Error: error:140890C7:SSL routines:ssl3_get_client_certificate:peer did not return a certificate</span>
+          </pre><br>
+
+          <p align="center" class="lead">
+To remedy this situation, we add incorporate the client certificate and key to the command by adding the following options:
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>--cert client.crt --key client.key </span>
+          </pre><br>
+
+          <h2>Testing the System</h2>
+
+          <p align="center" class="lead">
+Now that communication between the clients and broker is authenticated and encapsulated by TLS/SSL, here is a full output from the system:
+          </p>
+
+          <h4>Broker (Laptop)</h4>
+
+          <p align="center" class="lead">
+Start the mosquitto service
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>mosquitto -v -c /etc/mosquitto/mosquitto.conf</span>
+            <span>1478208253: Config loaded from /etc/mosquitto/mosquitto.conf.</span>
+            <span>1478208253: Opening ipv4 listen socket on port 8883.</span>
+            <span>1478208253: Opening ipv6 listen socket on port 8883.</span>
+          </pre><br>
+
+          <h4>Client 1 (Raspberry Pi)</h4>
+
+          <p align="center" class="lead">
+Subscribe to the testing topic
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>mosquitto_sub -t "ssltopic" -v -p 8883 -h 192.168.1.5 --cafile ca.crt --cert client.crt --key client.key </span>
+          </pre><br>
+
+          <h4>Client 2 (Laptop)</h4>
+
+          <p align="center" class="lead">
+Publish to the testing topic
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>mosquitto_pub -t "ssltopic" -m "testing" -p 8883 -h 192.168.1.5 --cafile ca.crt --cert server.crt --key server.key </span>
+          </pre><br>
+
+          <h4>Client 1 (Raspberry Pi)</h4>
+
+          <p align="center" class="lead">
+Recieved topic message
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>ssltopic testing</span>
+          </pre><br>
+
+          <h4>Broker (Laptop)</h4>
+
+          <p align="center" class="lead">
+Broker interaction
+          </p>
+
+          <pre align="left" class = "prettypint lang-bash prettyprinted">
+            <span>1478209805: New client connected from 192.168.1.5 as mosqpub/28552-Brian-Des (c1, k60).</span>
+            <span>1478209805: Sending CONNACK to mosqpub/28552-Brian-Des (0, 0)</span>
+            <span>1478209805: Received PUBLISH from mosqpub/28552-Brian-Des (d0, q0, r0, m0, 'ssltopic', ... (7 bytes))</span>
+            <span>1478209805: Sending PUBLISH to mosqsub/5983-raspberryp (d0, q0, r0, m0, 'ssltopic', ... (7 bytes))</span>
+            <span>1478209805: Received DISCONNECT from mosqpub/28552-Brian-Des</span>
+            <span>1478209805: Client mosqpub/28552-Brian-Des disconnected.</span>
+          </pre><br>
+
+        </div>
+
+      </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
@@ -69,5 +323,5 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
   </body>
-</html>
+  </html>
 
