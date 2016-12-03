@@ -8,13 +8,13 @@ broker_ip="192.168.1.8"
 is_on=True
 
 #create the client
-#mqttc = mqtt.Client()
+mqttc = mqtt.Client()
 
 #turn the motion sensor on or off based on messages from the "admin" topic
 #def on_message(client, userdata, message):
 #    if message.payload=="turnon":
 #        is_on=True
-#    if message.payload=="turnoff":
+# id   if message.payload=="turnoff":
 #        is_on=False
 
 #listen for messages on the "admin" topic
@@ -25,6 +25,7 @@ is_on=True
 
 #connect to the broker
 #mqttc.connect(broker_ip, port=8883, keepalive=60, bind_address="")
+mqttc.connect(broker_ip, port=1883, keepalive=60, bind_address="")
 
 #start listening for mqtt messages, asynchronously
 #mqttc.loop_start()
@@ -43,7 +44,7 @@ while is_on:
     #only send a message if motion hasn't already been detected, to avoid spamming
     if i==1 and already_detected==False:
         already_detected=True
-        #mqttc.publish("data", "Motion detected at {}".format(datetime.datetime.now()))
+        mqttc.publish("data", "Motion detected at {}".format(datetime.datetime.now()))
         GPIO.output(led_pin, 1)       #Turn on LED
     elif i==0:
         already_detected=False
