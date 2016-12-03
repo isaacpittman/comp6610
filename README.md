@@ -20,3 +20,16 @@ $ ./broker/start_broker.sh
 1479599570: Opening ipv6 listen socket on port 8883.
 Enter PEM pass phrase:
 ```
+
+#Passwords for certificates
+CA private key password: `c@p@ssw0rd`
+Server private key password: `s3rv3rp@ssw0rd`
+Client private key password: `cli3ntp@ssw0rd`
+
+#Topics for communication
+##Admin topic
+Topic name: `admin`
+Messages are JSON formatted objects with key `control` and possible values `on` and `off` to turn the motion sensor on and off.
+##Data topic
+Topic name: `data`
+Messages are JSON formatted objects with key `data` and possible a string value indicating the time the motion was detected.
