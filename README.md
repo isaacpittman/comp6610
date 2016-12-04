@@ -22,14 +22,29 @@ Enter PEM pass phrase:
 ```
 
 #Passwords for certificates
-CA private key password: `c@p@ssw0rd`
-Server private key password: `s3rv3rp@ssw0rd`
-Client private key password: `cli3ntp@ssw0rd`
+CA private key password: `c@p@ssw0rd` 
+Server private key password: `s3rv3rp@ssw0rd` 
+Client private key password: `cli3ntp@ssw0rd` 
 
 #Topics for communication
 ##Admin topic
-Topic name: `admin`
+Topic name: `admin` 
 Messages are JSON formatted objects with key `control` and possible values `on` and `off` to turn the motion sensor on and off.
 ##Data topic
-Topic name: `data`
+Topic name: `data` 
 Messages are JSON formatted objects with key `data` and possible a string value indicating the time the motion was detected.
+
+##Testing
+####Turn off the motion detection:
+This command uses username/password to authenticate itself to the broker, but it could have used a client certificate instead (see next example). The username and password are admin/fuiscool. The port for username/password authentication is 8883.
+To turn on motion detection, it sends a JSON formatted message on the "admin" topic. The JSON message has the key "control" and the value "off". Value "on" could be used to turn the motion detection on, instead.
+```
+mosquitto_pub -t "admin" -m '{"control":"off"}' --cafile ./comp6610_working_folder/comp6610/certs/ca.crt -h comp6610a5.duckdns.org -p  8883 -u "admin" -P "fuiscool" -d
+```
+
+####Listen for motion sensed messages:
+This example uses a client certificate instead of username/password for authentication to the broker. When using this command, you'll be prompted to enter the client private key password to unlock the private key. The port for client certificate authentication is 8884. 
+This command can be used to listen on the "data" topic for messages related to what motion was detected. (The actual message sent by client.py will be JSON formatted, with "data" as the key and the time the motion was detected as the value.)
+```
+mosquitto_sub -h comp6610a5.duckdns.org -p 8884 -t "data" --cafile ./certs/ca.crt --cert ./certs/client.crt --key ./certs/client.key -d
+```
