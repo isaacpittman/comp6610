@@ -11,7 +11,8 @@
 * `/app/src/main/java/roccasoftware/iot/MainActivity.java` contains the source code for the android project.
 * `/app/src/main/AndroidManifest.xml` Manifest for Permissons
 * `/app/src/main/res/layout/activity_main.xml` Layout File for our application
-* `/app/src/main/res/raw/iot.bks Our CA cert in android format
+* `/app/src/main/res/raw/iot.bks` Our CA cert in android format
+* All other files are default files for the android project gradle build
 
 
 `client.py` The script for the client connected to the motion sensor. It sends messages on the `data` channel when it detects signals from the motion detector, and it turns the motion sensor on or off when it receives messages on the `admin` channel. It also turns LEDs on and off when motion is detected or when the motion sensor is turned on or off.
